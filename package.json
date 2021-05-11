@@ -17,6 +17,10 @@
   },
   "scripts": {
     "dev": "webpack --mode development ./tictactoe/frontend/src/index.js --output-path ./tictactoe/frontend/static/frontend",
+    "watch": "webpack --mode development --watch ./tictactoe/frontend/src/index.js --output-path ./tictactoe/frontend/static/frontend",
     "build": "webpack --mode production ./tictactoe/frontend/src/index.js --output-path ./tictactoe/frontend/static/frontend"
+  },
+  "dependencies": {
+    "styled-components": "^5.3.0"
   }
 }

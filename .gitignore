@@ -13,3 +13,4 @@ yarn-error.log
 .npmrc
 /public/js/App.js
 /public/js/app.js
+/lib

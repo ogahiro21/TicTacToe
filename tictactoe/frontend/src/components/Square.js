@@ -1,18 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 
-export const Square = ({ tgt, squares, setSquares }) => {
-
+export const Square = ({
+  tgt,
+  squares,
+  setSquares,
+  xIsNext,
+  setXIsNext,
+  winner,
+}) => {
   const handleClick = (tgt, squares) => {
-    const swap = [...squares]
-    swap[tgt] = 'X'
-    setSquares(swap)
+    if (xIsNext && !winner) {
+      const swap = [...squares]
+      swap[tgt] = 'X'
+      setSquares(swap)
+      setXIsNext(false)
+    }
   }
   return (
-    <button
-      className="square"
-      onClick={() => handleClick(tgt, squares)}
-    >
+    <Sq className="square" onClick={() => handleClick(tgt, squares)}>
       {squares[tgt]}
-    </button>
+    </Sq>
   )
 }
+
+const Sq = styled.div`
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

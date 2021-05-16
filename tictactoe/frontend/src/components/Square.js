@@ -11,19 +11,23 @@ export const Square = ({
   winner,
 }) => {
   const handleClick = (tgt, squares) => {
-    axios
-      .get('api/teest')
-      .then((res) => {
-        console.log(res.data)
-      })
-      .catch((error) => {
-        console.log(error.response)
-      })
     if (xIsNext && !winner) {
       const swap = [...squares]
       swap[tgt] = 'X'
       setSquares(swap)
       setXIsNext(false)
+      axios
+        .post('api/teest/', swap)
+        // .get('api/teest')
+        // .post('api/teest', null, {
+        //   data: squares,
+        // })
+        .then((res) => {
+          console.log(res.data)
+        })
+        .catch((error) => {
+          console.log(error.response)
+        })
     }
   }
   return (

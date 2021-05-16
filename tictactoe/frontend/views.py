@@ -9,6 +9,5 @@ def index(request):
 @api_view(['GET', 'POST'])
 
 def teest(request):
-    # if request.method == 'GET':
-    return Response('Daata', status=status.HTTP_201_CREATED)
-    #     return 'Yaa'
+    if request.method == 'POST':
+        return Response(request.data, status=status.HTTP_200_OK)

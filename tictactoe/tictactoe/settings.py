@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'frontend',
+    'corsheaders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',                   #追加行
+    'django.middleware.common.CommonMiddleware',               #追加行
 ]
 
 ROOT_URLCONF = 'tictactoe.urls'
@@ -99,7 +103,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -124,3 +131,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:2000/',
+# )

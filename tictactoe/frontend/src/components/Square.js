@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 
 export const Square = ({
   tgt,
@@ -10,6 +11,14 @@ export const Square = ({
   winner,
 }) => {
   const handleClick = (tgt, squares) => {
+    axios
+      .get('api/teest')
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((error) => {
+        console.log(error.response)
+      })
     if (xIsNext && !winner) {
       const swap = [...squares]
       swap[tgt] = 'X'

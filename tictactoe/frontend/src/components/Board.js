@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Square } from './Square'
 import styled from 'styled-components'
+import axios from 'axios'
 
 export const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(null))
@@ -43,8 +44,17 @@ export const Board = () => {
   })
 
   useEffect(() => {
-    if (!xIsNext) {
+    if (!xIsNext && !calculateWinner(squares)) {
       // ここで計算処理
+      axios
+        .post('api/teest/', squares)
+        .then((res) => {
+          setSquares(res.data)
+          setXIsNext(true)
+        })
+        .catch((error) => {
+          console.log(error.response)
+        })
     }
   }, [xIsNext])
 

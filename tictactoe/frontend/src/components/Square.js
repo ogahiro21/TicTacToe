@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 
 export const Square = ({
   tgt,
@@ -16,15 +15,6 @@ export const Square = ({
       swap[tgt] = 'X'
       setSquares(swap)
       setXIsNext(false)
-      axios
-        .post('api/teest/', swap)
-        .then((res) => {
-          setSquares(res.data)
-          setXIsNext(true)
-        })
-        .catch((error) => {
-          console.log(error.response)
-        })
     }
   }
   return (

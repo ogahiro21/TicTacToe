@@ -10,7 +10,7 @@ export const Square = ({
   setXIsNext,
   winner,
 }) => {
-  const handleClick = (tgt, squares) => {
+  const handleClick = (tgt, squares, winner) => {
     if (xIsNext && !winner) {
       const swap = [...squares]
       swap[tgt] = 'X'
@@ -18,12 +18,9 @@ export const Square = ({
       setXIsNext(false)
       axios
         .post('api/teest/', swap)
-        // .get('api/teest')
-        // .post('api/teest', null, {
-        //   data: squares,
-        // })
         .then((res) => {
-          console.log(res.data)
+          setSquares(res.data)
+          setXIsNext(true)
         })
         .catch((error) => {
           console.log(error.response)
@@ -31,7 +28,7 @@ export const Square = ({
     }
   }
   return (
-    <Sq className="square" onClick={() => handleClick(tgt, squares)}>
+    <Sq className="square" onClick={() => handleClick(tgt, squares, winner)}>
       {squares[tgt]}
     </Sq>
   )

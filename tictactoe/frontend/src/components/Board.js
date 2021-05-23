@@ -5,8 +5,11 @@ import axios from 'axios'
 
 export const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(null))
-  const [status, setStatus] = useState('Next player: You')
-  const [xIsNext, setXIsNext] = useState(true)
+  const [status, setStatus] = useState('Next player: CPU')
+  // const [status, setStatus] = useState('Next player: You')
+  // const [xIsNext, setXIsNext] = useState(true)
+  const [xIsNext, setXIsNext] = useState(false)
+
   const [winner, setWinner] = useState(null)
 
   const calculateWinner = (squares) => {

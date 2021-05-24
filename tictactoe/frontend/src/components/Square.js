@@ -10,11 +10,13 @@ export const Square = ({
   winner,
 }) => {
   const handleClick = (tgt, squares, winner) => {
-    if (xIsNext && !winner) {
-      const swap = [...squares]
-      swap[tgt] = 'X'
-      setSquares(swap)
-      setXIsNext(false)
+    if(!squares[tgt]){
+      if (xIsNext && !winner) {
+        const swap = [...squares]
+        swap[tgt] = 'X'
+        setSquares(swap)
+        setXIsNext(false)
+      }
     }
   }
   return (

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Square } from './Square'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 
 export const Board = () => {
@@ -93,6 +94,13 @@ export const Board = () => {
           {renderSquare(8)}
         </BoardRow>
       </GameBoard>
+      <ResetBtn onClick={() => {
+        setXIsNext(true)
+        setSquares(Array(9).fill(null)
+        )}}>
+        <FontAwesomeIcon icon={['fal', 'undo']} />
+        Reset
+      </ResetBtn>
     </Body>
   )
 }
@@ -116,4 +124,23 @@ const BoardRow = styled.div`
   display: flex;
   width: 100%;
   height: 33%;
+`
+
+const ResetBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  background: #489f92;
+  border-radius: 4px;
+  padding: .5rem;
+  transition: 0.3s ease-in-out;
+  user-select: none;
+  svg {
+    padding-right: 1rem;
+  }
+  &:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
 `

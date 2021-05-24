@@ -59,8 +59,8 @@ def teest(request):
 
         # 角が一個もないなら角
         if sq[0] != 'o' and sq[2] != 'o' and sq[6] != 'o' and sq[8] != 'o':
-            if(sq[0] != 'X'): sq[0] = 'o'
-            elif(sq[2] != 'X'): sq[2] = 'o'
+            if(sq[0] != 'X' and sq[1] != 'X' and sq[3] != 'X' and sq[8] != 'X'): sq[0] = 'o'
+            elif(sq[2] != 'X' and sq[1] != 'X'): sq[2] = 'o'
             elif(sq[6] != 'X'): sq[6] = 'o'
             elif(sq[8] != 'X'): sq[8] = 'o'
             return Response(sq, status=status.HTTP_200_OK)

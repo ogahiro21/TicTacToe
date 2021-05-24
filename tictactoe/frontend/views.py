@@ -8,7 +8,6 @@ import random
 def index(request):
     return render(request,'frontend/index.html')
     
-
 def winner(squares):
     lines = [
       [0, 1, 2],
@@ -29,7 +28,7 @@ def winner(squares):
 
 @api_view(['GET', 'POST'])
 
-def teest(request):
+def cpu(request):
     if request.method == 'POST':
         sq = request.data
         swap = sq

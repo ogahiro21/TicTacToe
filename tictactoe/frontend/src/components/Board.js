@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Square } from './Square'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 
 export const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(null))
-  // const [status, setStatus] = useState('Next player: CPU')
   const [status, setStatus] = useState('Next player: You')
   const [xIsNext, setXIsNext] = useState(true)
-  // const [xIsNext, setXIsNext] = useState(false)
-
   const [winner, setWinner] = useState(null)
 
   const calculateWinner = (squares) => {
@@ -44,7 +40,6 @@ export const Board = () => {
 
   useEffect(() => {
     setWinner(calculateWinner(squares))
-    // ここ上手く動かないかも
     if (winner != 'draw' && winner != null) {
       setStatus('Winner: ' + winner)
     } else if (winner) {
@@ -58,7 +53,7 @@ export const Board = () => {
     if (!xIsNext && !calculateWinner(squares)) {
       // ここで計算処理
       axios
-        .post('api/teest/', squares)
+        .post('api/cpu/', squares)
         .then((res) => {
           setSquares(res.data)
           setXIsNext(true)
@@ -101,15 +96,6 @@ export const Board = () => {
           {renderSquare(8)}
         </BoardRow>
       </GameBoard>
-      {/* <ResetBtn
-        onClick={() => {
-          setXIsNext(true)
-          setSquares(Array(9).fill(null))
-        }}
-      >
-        <FontAwesomeIcon icon={['fal', 'undo']} />
-        Reset
-      </ResetBtn> */}
       <TurnSelector>
         <Btn
           onClick={() => {
@@ -153,30 +139,12 @@ const BoardRow = styled.div`
   height: 33%;
 `
 
-const ResetBtn = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-  background: #489f92;
-  border-radius: 4px;
-  padding: 0.5rem;
-  transition: 0.3s ease-in-out;
-  user-select: none;
-  svg {
-    padding-right: 1rem;
-  }
-  &:hover {
-    opacity: 0.7;
-    cursor: pointer;
-  }
-`
-
 const TurnSelector = styled.div`
   display: flex;
   margin-top: 1rem;
   width: 100%;
 `
+
 const Btn = styled.div`
   &:first-child {
     margin-right: 0.5rem;

@@ -25,10 +25,10 @@ export const Square = ({
 }
 
 const Sq = styled.div`
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid black;
+  box-sizing: border-box;
+  border: 3px solid #489f92;
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
   user-select: none;

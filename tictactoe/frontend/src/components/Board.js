@@ -74,27 +74,46 @@ export const Board = () => {
     )
   }
   return (
-    <div>
-      <div className="status">{status}</div>
-      <BoardRow>
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
-      </BoardRow>
-      <BoardRow>
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
-      </BoardRow>
-      <BoardRow>
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
-      </BoardRow>
-    </div>
+    <Body>
+      <StatusBar>{status}</StatusBar>
+      <GameBoard>
+        <BoardRow>
+          {renderSquare(0)}
+          {renderSquare(1)}
+          {renderSquare(2)}
+        </BoardRow>
+        <BoardRow>
+          {renderSquare(3)}
+          {renderSquare(4)}
+          {renderSquare(5)}
+        </BoardRow>
+        <BoardRow>
+          {renderSquare(6)}
+          {renderSquare(7)}
+          {renderSquare(8)}
+        </BoardRow>
+      </GameBoard>
+    </Body>
   )
 }
 
+const Body = styled.div`
+  width: 14rem;
+`
+
+const StatusBar = styled.div`
+  color: #2d3b39;
+  text-align: center;
+  padding: 1rem 0;
+`
+
+const GameBoard = styled.div`
+  overflow: hidden;
+  height: 14rem;
+`
+
 const BoardRow = styled.div`
   display: flex;
+  width: 100%;
+  height: 33%;
 `

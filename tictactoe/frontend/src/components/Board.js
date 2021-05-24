@@ -39,16 +39,18 @@ export const Board = () => {
         return null
       }
     }
-    return 'drew'
+    return 'draw'
 
   }
 
   useEffect(() => {
     setWinner(calculateWinner(squares))
     // ここ上手く動かないかも
-    if (calculateWinner(squares)) {
+    if (winner != 'draw' && winner!=null) {
       setStatus('Winner: ' + winner)
-    } else {
+    } else if (winner) {
+      setStatus('Draw')
+    } else{
       setStatus('Next player: ' + (xIsNext ? 'You' : 'CPU'))
     }
   })

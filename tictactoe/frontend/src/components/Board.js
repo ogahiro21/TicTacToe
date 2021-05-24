@@ -126,6 +126,7 @@ const StatusBar = styled.div`
   color: #2d3b39;
   text-align: center;
   padding: 1rem 0;
+  user-select: none;
 `
 
 const GameBoard = styled.div`

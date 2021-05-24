@@ -40,17 +40,16 @@ export const Board = () => {
       }
     }
     return 'draw'
-
   }
 
   useEffect(() => {
     setWinner(calculateWinner(squares))
     // ここ上手く動かないかも
-    if (winner != 'draw' && winner!=null) {
+    if (winner != 'draw' && winner != null) {
       setStatus('Winner: ' + winner)
     } else if (winner) {
       setStatus('Draw')
-    } else{
+    } else {
       setStatus('Next player: ' + (xIsNext ? 'You' : 'CPU'))
     }
   })
@@ -102,13 +101,33 @@ export const Board = () => {
           {renderSquare(8)}
         </BoardRow>
       </GameBoard>
-      <ResetBtn onClick={() => {
-        setXIsNext(true)
-        setSquares(Array(9).fill(null)
-        )}}>
+      {/* <ResetBtn
+        onClick={() => {
+          setXIsNext(true)
+          setSquares(Array(9).fill(null))
+        }}
+      >
         <FontAwesomeIcon icon={['fal', 'undo']} />
         Reset
-      </ResetBtn>
+      </ResetBtn> */}
+      <TurnSelector>
+        <Btn
+          onClick={() => {
+            setXIsNext(true)
+            setSquares(Array(9).fill(null))
+          }}
+        >
+          先攻
+        </Btn>
+        <Btn
+          onClick={() => {
+            setXIsNext(false)
+            setSquares(Array(9).fill(null))
+          }}
+        >
+          後攻
+        </Btn>
+      </TurnSelector>
     </Body>
   )
 }
@@ -141,12 +160,40 @@ const ResetBtn = styled.div`
   margin-top: 1rem;
   background: #489f92;
   border-radius: 4px;
-  padding: .5rem;
+  padding: 0.5rem;
   transition: 0.3s ease-in-out;
   user-select: none;
   svg {
     padding-right: 1rem;
   }
+  &:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+`
+
+const TurnSelector = styled.div`
+  display: flex;
+  margin-top: 1rem;
+  width: 100%;
+`
+const Btn = styled.div`
+  &:first-child {
+    margin-right: 0.5rem;
+  }
+  &:last-child {
+    margin-left: 0.5rem;
+  }
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  background: #489f92;
+  border-radius: 4px;
+  padding: 0.5rem;
+  transition: 0.3s ease-in-out;
+  user-select: none;
   &:hover {
     opacity: 0.7;
     cursor: pointer;

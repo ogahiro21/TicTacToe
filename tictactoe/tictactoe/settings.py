@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-_zepr*^kks@@0jwf-yuu(u&nlf&yjf=t#w8u3$u=9c3lj*+kiv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://tictactoe-kmd.herokuapp.com',
+]
 
 
 # Application definition

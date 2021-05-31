@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_zepr*^kks@@0jwf-yuu(u&nlf&yjf=t#w8u3$u=9c3lj*+kiv
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://tictactoe-kmd.herokuapp.com',
+    '*',
 ]
 
 

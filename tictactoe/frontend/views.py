@@ -63,13 +63,13 @@ def cpu(request):
             elif(sq[6] != 'X'): sq[6] = 'o'
             elif(sq[8] != 'X'): sq[8] = 'o'
             return Response(sq, status=status.HTTP_200_OK)
-        # 角優先
+        # 角優先    
         for i in [0, 2, 6, 8]:
             if sq[i] == None:
                 sq[i] = 'o' 
                 return Response(sq, status=status.HTTP_200_OK)
 
-        # とりあえずランダム
+        # ランダム
         while(1):
             num = random.randint(0, len(sq)-1)
             if(sq[num] == None):

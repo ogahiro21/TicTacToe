@@ -10,7 +10,7 @@ export const Square = ({
   winner,
 }) => {
   const handleClick = (tgt, squares, winner) => {
-    if(!squares[tgt]){
+    if (!squares[tgt]) {
       if (xIsNext && !winner) {
         const swap = [...squares]
         swap[tgt] = 'X'
@@ -34,7 +34,9 @@ const Sq = styled.div`
   justify-content: center;
   align-items: center;
   user-select: none;
+  transition: 0.3s ease-in-out;
   &:hover {
     cursor: pointer;
+    background: #b8fcf2;
   }
 `

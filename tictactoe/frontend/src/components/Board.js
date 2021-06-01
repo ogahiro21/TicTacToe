@@ -107,8 +107,9 @@ export const Board = () => {
         </Btn>
         <Btn
           onClick={() => {
-            setXIsNext(false)
+            setXIsNext(null)
             setSquares(Array(9).fill(null))
+            setXIsNext(false)
           }}
         >
           後攻
